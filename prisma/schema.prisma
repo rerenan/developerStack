@@ -24,4 +24,5 @@ model answers {
   answer String
   question questions @relation(fields: [questionId], references: [id])
   questionId Int
+  createdAt DateTime
 }
