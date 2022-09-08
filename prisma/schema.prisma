@@ -15,7 +15,7 @@ model questions {
   askedBy String
   question String
   createdAt DateTime @default(now())
-  awnsers answers[]
+  answers answers[]
 }
 
 model answers {

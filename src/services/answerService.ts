@@ -12,3 +12,4 @@ export async function insert(questionId: number, answerData: AnswerInsertType) {
         }
     });
 }
+

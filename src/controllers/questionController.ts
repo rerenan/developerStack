@@ -13,9 +13,9 @@ export async function createQuestion(req: Request, res: Response) {
 
 export async function createAnswer(req: Request, res: Response) {
   const {answeredBy, answer} = req.body;
-  const {id} = req.params;
+  const questionId = Number(req.params.id);
 
-  await answerService.insert(Number(id), {answeredBy, answer});
+  await answerService.insert(questionId, {answeredBy, answer});
 
   res.sendStatus(201);
 }
@@ -28,5 +28,9 @@ export async function get(req: Request, res: Response) {
 }
 
 export async function getById(req: Request, res: Response) {
-  // TODO
+  const questionId = Number(req.params.id);
+
+  const question  = await questionService.getById(questionId);
+
+  res.status(200).send(question);
 }
