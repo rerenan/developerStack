@@ -12,3 +12,8 @@ export async function insert(questionData: QuestionInsertType) {
         }
     });
 }
+
+export async function getAll() {
+    const result = await prisma.questions.findMany();
+    return result;
+}
