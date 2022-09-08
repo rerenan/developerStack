@@ -1,7 +1,7 @@
 export interface Answer {
     id: number;
-    answeredBy: String;
-    answer: String;
+    answeredBy: string;
+    answer: string;
     questionId: number;
     createdAt: Date;
 }

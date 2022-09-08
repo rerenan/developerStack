@@ -1,0 +1,5 @@
+-- AlterTable
+ALTER TABLE "answers" ALTER COLUMN "createdAt" SET DEFAULT CURRENT_TIMESTAMP;
+
+-- AlterTable
+ALTER TABLE "questions" ALTER COLUMN "createdAt" SET DEFAULT CURRENT_TIMESTAMP;
