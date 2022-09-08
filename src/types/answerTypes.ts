@@ -1,9 +1,9 @@
-
-export interface Question {
+export interface Answer {
     id: number;
-    askedBy: String;
-    question: String;
+    answeredBy: String;
+    answer: String;
+    questionId: number;
     createdAt: Date;
 }
 
-export type QuestionInsertType = Omit<Question,"id" | "createdAt">;
+export type AnswerInsertType = Omit<Answer,"id" | "createdAt" | "questionId">;
