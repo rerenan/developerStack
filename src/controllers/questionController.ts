@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 
 import * as questionService from "../services/questionService"
+import * as answerService from "../services/answerService"
 
 export async function createQuestion(req: Request, res: Response) {
   const {askedBy, question} = req.body;
@@ -11,7 +12,12 @@ export async function createQuestion(req: Request, res: Response) {
 }
 
 export async function createAnswer(req: Request, res: Response) {
-  // TODO
+  const {answeredBy, answer} = req.body;
+  const {id} = req.params;
+
+  await answerService.insert(Number(id), {answeredBy, answer});
+
+  res.sendStatus(201);
 }
 
 export async function get(req: Request, res: Response) {
