@@ -14,5 +14,14 @@ model questions {
   id Int @id @default(autoincrement())
   askedBy String
   question String
-  createdAt DateTime 
+  createdAt DateTime
+  awnsers answers[]
+}
+
+model answers {
+  id Int @id @default(autoincrement())
+  answeredBy String
+  answer String
+  question questions @relation(fields: [questionId], references: [id])
+  questionId Int
 }
