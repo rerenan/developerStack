@@ -1,40 +1,16 @@
-import { prisma } from './../config/database';
 import { QuestionInsertType } from './../types/questionTypes';
+import * as questionRepository from "../repositories/questionRepository"
 
+export async function createQuestion(questionData: QuestionInsertType){
+    await questionRepository.insert(questionData);
+};
 
-export async function insert(questionData: QuestionInsertType) {
-    const {askedBy, question} = questionData;
-    
-    await prisma.questions.create({
-        data: {
-            askedBy,
-            question
-        }
-    });
-}
-
-export async function getAll() {
-    const result = await prisma.questions.findMany();
+export async function getAllQuestions() {
+    const result = questionRepository.getAll();
     return result;
 }
 
-export async function getById(questionId:number) {
-    
-    const result = await prisma.questions.findUnique({
-        where: {
-            id: questionId
-        },
-        select: {
-            askedBy: true,
-            question: true,
-            answers: {
-                select: {
-                    answeredBy: true,
-                    answer: true
-                }
-            }
-        }
-    });
-
+export async function getQuestionById(questionId:number) {
+    const result = questionRepository.getById(questionId);
     return result;
 }
